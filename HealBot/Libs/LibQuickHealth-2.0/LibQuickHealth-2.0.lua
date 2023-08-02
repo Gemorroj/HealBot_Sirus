@@ -221,8 +221,7 @@ do
 			eventFrame:SetScript("OnUpdate", IncrementCounter)
 			HealthUpdatedDebugRegistered = true
 		elseif event == "UnitHealthUpdated" then
-			eventFrame:RegisterEvent("PARTY_MEMBERS_CHANGED")
-			eventFrame:RegisterEvent("RAID_ROSTER_UPDATE")
+			eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE")
 			eventFrame:RegisterEvent("UNIT_PET")
 			eventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 			eventFrame:RegisterEvent("PLAYER_FOCUS_CHANGED")
@@ -248,8 +247,7 @@ do
 			eventFrame:SetScript("OnUpdate", nil)
 			HealthUpdatedDebugRegistered = nil
 		elseif event == "UnitHealthUpdated" then
-			eventFrame:UnregisterEvent("PARTY_MEMBERS_CHANGED")
-			eventFrame:UnregisterEvent("RAID_ROSTER_UPDATE")
+			eventFrame:UnregisterEvent("GROUP_ROSTER_UPDATE")
 			eventFrame:UnregisterEvent("UNIT_PET")
 			eventFrame:UnregisterEvent("PLAYER_TARGET_CHANGED")
 			eventFrame:UnregisterEvent("PLAYER_FOCUS_CHANGED")
@@ -269,8 +267,8 @@ end
 
 -- Initialization.
 function eventHandlers.PLAYER_LOGIN()
-	if UnitGUID("player") and tonumber(UnitGUID('player'))>0 then
-		eventHandlers.RAID_ROSTER_UPDATE()
+	if UnitGUID("player") then
+		eventHandlers.GROUP_ROSTER_UPDATE()
 		if healthFromGUID[guid] then
 			initialized = true
 			eventHandlers.PLAYER_LOGIN = nil
@@ -367,13 +365,9 @@ do
 		UpdateTarget()
 		UpdateFocus()
 	end
-	eventHandlers.PARTY_MEMBERS_CHANGED = MapGUIDs
-	eventHandlers.RAID_ROSTER_UPDATE = MapGUIDs
+	eventHandlers.GROUP_ROSTER_UPDATE = MapGUIDs
 	eventHandlers.UNIT_PET = MapGUIDs
 end
-
--- TODO Remove
-QuickHealth.guidmap = unitIDsFromGUID
 
 local MAX_QUEUE_SIZE = 5
 local MAX_HP5_TICK = 20 -- 50 HP5
@@ -655,7 +649,7 @@ end
 local flagRaid = bit.bor(COMBATLOG_OBJECT_AFFILIATION_MINE, COMBATLOG_OBJECT_AFFILIATION_PARTY, COMBATLOG_OBJECT_AFFILIATION_RAID)
 local flagPlayerPets = bit.bor(COMBATLOG_OBJECT_TYPE_PLAYER, COMBATLOG_OBJECT_TYPE_PET)
 local bitband = bit.band
-function eventHandlers.COMBAT_LOG_EVENT_UNFILTERED(timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, ...)
+function eventHandlers.COMBAT_LOG_EVENT_UNFILTERED(timestamp, event, hideCaster, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, ...)
 	local amount
 	local amountMax
 	local guid

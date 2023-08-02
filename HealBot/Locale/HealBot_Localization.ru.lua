@@ -17,7 +17,7 @@ if (GetLocale() == "ruRU") then
     HEALBOT_SHAMAN                         = "Шаман";
     HEALBOT_WARLOCK                        = "Чернокнижник";
     HEALBOT_WARRIOR                        = "Воин";
-    HEALBOT_DEATHKNIGHT                    = "Рыцарь cмерти";
+    HEALBOT_DEATHKNIGHT                    = "Рыцарь смерти";
     HEALBOT_NEW_ITEMS                      = "Предметы";
 
     --ITEMS--
@@ -27,7 +27,7 @@ if (GetLocale() == "ruRU") then
     HEALBOT_ACCESSORY_HEALING              = GetSpellInfo(311060) or "Целительное зелье";
 
     --NEW_SPELLS--
-    
+
     HEALBOT_COVER_OF_LIGHT                 = GetSpellInfo(319738) or "Покров света";
     HEALBOT_RESIDUAL_SHINE                 = GetSpellInfo(319540) or "Остаточное сияние (T6)";
     HEALBOT_THE_GIFT_OF_ISERA              = GetSpellInfo(308090) or "Дар Изеры";
@@ -41,7 +41,7 @@ if (GetLocale() == "ruRU") then
     HEALBOT_HEALING_RAIN                   = GetSpellInfo(308017) or "Целительный Ливень";
     HEALBOT_PRIMEVAL_MOISTURE              = GetSpellInfo(308015) or "Первозданная влага";
     HEALBOT_ICE_BLOCK                      = GetSpellInfo(45438)  or "Ледяная глыба";
-    
+
 
     --STANDART_SPELLS--
 
@@ -475,7 +475,7 @@ if (GetLocale() == "ruRU") then
     HEALBOT_OPTIONS_TAB_BUFFS              = "Баффы";
 
     HEALBOT_OPTIONS_PANEL_TEXT             = "Настройки панели исцеления";
-    HEALBOT_OPTIONS_BARALPHA               = "Прозрач-ть включеных";
+    HEALBOT_OPTIONS_BARALPHA               = "Прозрач-ть включенных";
     HEALBOT_OPTIONS_BARALPHAINHEAL         = "Прозр-ть вход-го исцеления";
     HEALBOT_OPTIONS_BARALPHAEOR            = "Прозр-ть 'Вне досягаемости'";
     HEALBOT_OPTIONS_ACTIONLOCKED           = "Закрепить позиции";
@@ -512,7 +512,7 @@ if (GetLocale() == "ruRU") then
     HEALBOT_SKIN_BORDERTEXT                = "Края";
     HEALBOT_OPTIONS_SKINFONT               = "Шрифт"
     HEALBOT_OPTIONS_SKINFHEIGHT            = "Размер шрифта";
-    HEALBOT_OPTIONS_BARALPHADIS            = "Прозрачностьть откл.";
+    HEALBOT_OPTIONS_BARALPHADIS            = "Прозрачность откл.";
     HEALBOT_OPTIONS_SHOWHEADERS            = "Заголовки";
 
     HEALBOT_OPTIONS_ITEMS                  = "Предметы";

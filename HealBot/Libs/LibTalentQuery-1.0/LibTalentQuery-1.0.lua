@@ -1,6 +1,6 @@
 --[[
 Name: LibTalentQuery-1.0
-Revision: $Rev: 80 $
+Revision: $Rev: 84 $
 Author: Rich Martel (richmartel@gmail.com)
 Documentation: http://wowace.com/wiki/LibTalentQuery-1.0
 SVN: svn://svn.wowace.com/wow/libtalentquery-1-0/mainline/trunk
@@ -27,7 +27,7 @@ Example Usage:
 	end
 ]]
 
-local MAJOR, MINOR = "LibTalentQuery-1.0", 90000 + tonumber(("$Rev: 80 $"):match("(%d+)"))
+local MAJOR, MINOR = "LibTalentQuery-1.0", 90000 + tonumber(("$Rev: 84 $"):match("(%d+)"))
 
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
@@ -113,6 +113,8 @@ local function GuidToUnitID(guid)
         return "target"
 	elseif (UnitGUID("focus") == guid) then
 		return "focus"
+	elseif (UnitGUID("mouseover") == guid) then
+		return "mouseover"
     end
 
 	for i = min, max + 3 do
